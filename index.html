@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-mood="default">
 
   <header class="site-header">
     <h1>Katachi Onsha</h1>
@@ -56,6 +56,21 @@
         featuring a soft and clear tone, ideal for pop,
         lo-fi, and emotional music.
       </p>
+    </section>
+
+    <section class="interactive-panel" aria-label="Interactive controls">
+      <h2>Interactive Studio</h2>
+      <p>Change the page mood and discover random facts about Katachi.</p>
+
+      <div class="mood-switcher" role="group" aria-label="Choose visual mood">
+        <button type="button" class="chip active" data-mood="default">Default</button>
+        <button type="button" class="chip" data-mood="night">Night</button>
+        <button type="button" class="chip" data-mood="rain">Rain</button>
+        <button type="button" class="chip" data-mood="neon">Neon</button>
+      </div>
+
+      <button id="fact-btn" class="btn" type="button">Show me a random fact</button>
+      <p id="fact-output" class="fact-output" aria-live="polite">Click to reveal a Katachi fact ✨</p>
     </section>
 
     <section class="profile">
@@ -81,6 +96,8 @@
 
   </main>
 
+  <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+
   <footer>
     <p>© 2026 SynthDragon Studios</p>
     <p>
@@ -91,5 +108,6 @@
     </p>
   </footer>
 
+  <script src="script.js" defer></script>
 </body>
 </html>
