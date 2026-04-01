@@ -1,0 +1,260 @@
+/* =========================
+   Base
+========================= */
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(180deg, #0e0d0a 0%, #14120f 100%);
+  color: #f5f3ea;
+  margin: 0;
+  padding: 0;
+  padding-top: 50px;
+  line-height: 1.7;
+}
+
+/* =========================
+   Header
+========================= */
+
+.site-header {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(180deg, #181610 0%, #14120f 100%);
+  border-bottom: 1px solid rgba(212,175,55,0.15);
+}
+
+h1 {
+  font-family: 'Cinzel', serif;
+  margin: 0;
+  font-size: 3em;
+  letter-spacing: 1px;
+  color: #f1d27a;
+  text-shadow: 0 0 25px rgba(212,175,55,0.25);
+}
+
+.subtitle {
+  color: #d4af37;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.studio {
+  font-size: 0.9em;
+  opacity: 0.6;
+  margin-top: 5px;
+}
+
+/* =========================
+   Layout
+========================= */
+
+main {
+  padding: 50px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+section {
+  margin-bottom: 60px;
+}
+
+/* =========================
+   Character Image
+========================= */
+
+.character {
+  max-width: 340px;
+  display: block;
+  margin: 30px auto;
+  border-radius: 14px;
+  box-shadow: 0 0 50px rgba(212,175,55,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 70px rgba(212,175,55,0.35);
+}
+
+/* =========================
+   Description
+========================= */
+
+.description {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto;
+  font-size: 1.1em;
+}
+
+/* =========================
+   Profile
+========================= */
+
+.profile h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #f1d27a;
+  font-family: 'Playfair Display', serif;
+}
+
+.profile ul {
+  list-style: none;
+  padding: 0;
+  max-width: 550px;
+  margin: auto;
+}
+
+.profile li {
+  margin: 10px 0;
+  padding: 10px 14px;
+  background: #1a1813;
+  border-left: 3px solid #d4af37;
+  border-radius: 6px;
+}
+
+/* =========================
+   Navigation
+========================= */
+
+.main-nav {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.main-nav a {
+  margin: 0 14px;
+  color: #d4af37;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.main-nav a:hover {
+  opacity: 0.7;
+}
+
+/* =========================
+   Button
+========================= */
+
+.btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #d4af37, #f1d27a);
+  color: #0e0d0a;
+  padding: 16px 32px;
+  margin: 25px auto;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 25px rgba(212,175,55,0.25);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 40px rgba(212,175,55,0.4);
+}
+
+/* =========================
+   Art Credit
+========================= */
+
+.art-credit {
+  font-size: 0.85em;
+  color: #c9c4b0;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  text-align: center;
+  font-style: italic;
+}
+
+.art-credit a {
+  color: #f1d27a;
+  text-decoration: none;
+}
+
+.art-credit a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   Footer
+========================= */
+
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  background: #181610;
+  border-top: 1px solid rgba(212,175,55,0.15);
+  margin-top: 70px;
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.2em;
+  }
+
+  .character {
+    max-width: 90%;
+  }
+
+  .btn {
+    width: 90%;
+  }
+}
+
+/* Ticker Bar */
+
+.ticker {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.ticker-track {
+    display: flex;
+    width: max-content;
+    animation: scroll 20s linear infinite;
+}
+
+.ticker-content {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.ticker a {
+    color: #9f9bff;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 0.9rem;
+    transition: 0.3s ease;
+}
+
+.ticker a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px #9f9bff;
+}
+
+/* Scroll Animation */
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
