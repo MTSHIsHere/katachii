@@ -42,7 +42,7 @@ body[data-mood="neon"] {
 ========================= */
 
 body {
-  font-family: 'Kaisei Decol', serif;
+  font-family: 'New Tegomin', serif;
   background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
   color: var(--text);
   margin: 0;
