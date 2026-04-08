@@ -1,38 +1,10 @@
-const facts = [
-  'Katachi is tuned for a soft and expressive Japanese vocal style.',
-  'He is a great match for lo-fi, ballads, and atmospheric songs.',
-  'Favorite vibe: rainy nights with synth pads and warm chords.',
-  'Katachi Onsha was designed as a free UTAU voicebank project.',
-  'His profile style combines calm energy with emotional depth.'
-];
-
-const factButton = document.getElementById('fact-btn');
-const factOutput = document.getElementById('fact-output');
-const moodButtons = document.querySelectorAll('.chip');
 const backToTop = document.getElementById('back-to-top');
 const characterImage = document.querySelector('.character');
 const nextImageButton = document.getElementById('next-image-btn');
 
-if (factButton && factOutput) {
-  factButton.addEventListener('click', () => {
-    const randomIndex = Math.floor(Math.random() * facts.length);
-    factOutput.textContent = facts[randomIndex];
-  });
-}
-
-moodButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    const selectedMood = button.dataset.mood || 'default';
-    document.body.setAttribute('data-mood', selectedMood);
-
-    moodButtons.forEach((chip) => chip.classList.remove('active'));
-    button.classList.add('active');
-  });
-});
-
 if (backToTop) {
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 320) {
+    if (window.scrollY > 300) {
       backToTop.classList.add('visible');
     } else {
       backToTop.classList.remove('visible');
@@ -45,43 +17,21 @@ if (backToTop) {
 }
 
 if (characterImage) {
-  const fallbackImages = ['character.png', 'character2.png', 'character3.png'];
   const gallerySources =
     characterImage.dataset.gallery
       ?.split(',')
       .map((source) => source.trim())
-      .filter(Boolean) || fallbackImages;
+      .filter(Boolean) || [];
 
   const availableImages = [];
   let currentImageIndex = 0;
   let touchStartX = null;
-  const swipeThreshold = 40;
 
   const updateImage = (direction) => {
-    if (availableImages.length <= 1) {
-      return;
-    }
-
+    if (availableImages.length <= 1) return;
     currentImageIndex =
       (currentImageIndex + direction + availableImages.length) % availableImages.length;
     characterImage.src = availableImages[currentImageIndex];
-  };
-
-  const registerSwipe = (touchEndX) => {
-    if (touchStartX === null) {
-      return;
-    }
-
-    const deltaX = touchEndX - touchStartX;
-    if (Math.abs(deltaX) < swipeThreshold) {
-      return;
-    }
-
-    if (deltaX < 0) {
-      updateImage(1);
-    } else {
-      updateImage(-1);
-    }
   };
 
   Promise.all(
@@ -95,23 +45,14 @@ if (characterImage) {
         })
     )
   ).then((sources) => {
-    sources.forEach((source) => {
-      if (source) {
-        availableImages.push(source);
-      }
-    });
+    sources.forEach((source) => source && availableImages.push(source));
+    if (availableImages.length === 0) return;
 
-    if (availableImages.length === 0) {
-      return;
-    }
+    const initialIndex = availableImages.findIndex((source) => characterImage.src.endsWith(source));
+    if (initialIndex >= 0) currentImageIndex = initialIndex;
 
-    const initialIndex = availableImages.findIndex((source) =>
-      characterImage.src.endsWith(source)
-    );
-    if (initialIndex >= 0) {
-      currentImageIndex = initialIndex;
-    } else {
-      characterImage.src = availableImages[0];
+    if (nextImageButton) {
+      nextImageButton.addEventListener('click', () => updateImage(1));
     }
 
     characterImage.addEventListener(
@@ -126,39 +67,15 @@ if (characterImage) {
       'touchend',
       (event) => {
         const touchEndX = event.changedTouches[0]?.clientX;
-        if (touchEndX !== undefined) {
-          registerSwipe(touchEndX);
+        if (touchStartX !== null && touchEndX !== undefined) {
+          const deltaX = touchEndX - touchStartX;
+          if (Math.abs(deltaX) >= 40) {
+            updateImage(deltaX < 0 ? 1 : -1);
+          }
         }
         touchStartX = null;
       },
       { passive: true }
     );
   });
-}
-
-if (characterImage && nextImageButton) {
-  const fallbackImages = ['character.png', 'icon.png'];
-  const availableImages =
-    characterImage.dataset.gallery
-      ?.split(',')
-      .map((source) => source.trim())
-      .filter(Boolean) || fallbackImages;
-
-  let currentImageIndex = 0;
-
-  const showNextImage = () => {
-    if (availableImages.length <= 1) {
-      return;
-    }
-
-    currentImageIndex = (currentImageIndex + 1) % availableImages.length;
-    characterImage.src = availableImages[currentImageIndex];
-  };
-
-  const initialIndex = availableImages.findIndex((source) => characterImage.src.endsWith(source));
-  if (initialIndex >= 0) {
-    currentImageIndex = initialIndex;
-  }
-
-  nextImageButton.addEventListener('click', showNextImage);
 }
