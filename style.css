@@ -51,6 +51,14 @@ body {
   transition: background 0.4s ease;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none;
+    transition: none;
+    scroll-behavior: auto;
+  }
+}
+
 /* =========================
    Header
 ========================= */
@@ -60,6 +68,7 @@ body {
   padding: 60px 20px;
   background: linear-gradient(180deg, var(--header-start) 0%, var(--header-end) 100%);
   border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  animation: fadeSlideDown 0.8s ease;
 }
 
 h1 {
@@ -108,12 +117,51 @@ section {
   border-radius: 14px;
   box-shadow: 0 0 50px rgba(212, 175, 55, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: floatCharacter 5.5s ease-in-out infinite;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .character:hover {
   transform: scale(1.03);
   box-shadow: 0 0 70px rgba(212, 175, 55, 0.35);
 }
+
+.next-image-btn {
+  display: block;
+  margin: -10px auto 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  background: rgba(24, 22, 16, 0.9);
+  color: var(--gold-soft);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+
+.music-player {
+  max-width: 420px;
+  margin: 18px auto 26px;
+  padding: 14px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 10px;
+}
+
+.music-player-label {
+  margin: 0 0 10px;
+  color: var(--gold-soft);
+  font-weight: 600;
+}
+
+.music-player audio {
+  width: 100%;
+}
+
 
 /* =========================
    Description
@@ -136,6 +184,8 @@ section {
   border-radius: 12px;
   padding: 24px;
   text-align: center;
+  box-shadow: 0 0 0 rgba(212, 175, 55, 0.2);
+  animation: panelPulse 4.5s ease-in-out infinite;
 }
 
 .interactive-panel h2 {
@@ -169,7 +219,20 @@ section {
   margin-top: 12px;
   color: #dcd4bd;
   min-height: 1.8em;
-}
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .fact-output.fact-animate {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  
+  .mood-output {
+  margin-top: 8px;
+  color: #cfc6ab;
+  font-size: 0.95rem;
+  }
+
 
 /* =========================
    Profile
@@ -235,12 +298,34 @@ section {
   box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
   border: none;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
 }
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0) 35%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 65%
+  );
+  transform: translateX(-140%);
+  transition: transform 0.65s ease;
+  pointer-events: none;
+}
+
+.btn:hover::after {
+  transform: translateX(140%);
+}
+
 
 /* =========================
    Back to top
@@ -281,6 +366,54 @@ footer {
   margin-top: 70px;
   font-size: 0.9em;
   opacity: 0.7;
+}
+
+/* =========================
+   Scroll Reveal
+========================= */
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-on-scroll.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   Keyframes
+========================= */
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatCharacter {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes panelPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(212, 175, 55, 0.12);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.18);
+  }
 }
 
 /* =========================
