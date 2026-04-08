@@ -42,7 +42,7 @@ body[data-mood="neon"] {
 ========================= */
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Kaisei Decol', serif;
   background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
   color: var(--text);
   margin: 0;
@@ -72,7 +72,7 @@ body {
 }
 
 h1 {
-  font-family: 'Cinzel', serif;
+  font-family: 'New Tegomin', serif;
   margin: 0;
   font-size: 3em;
   letter-spacing: 1px;
@@ -242,7 +242,7 @@ section {
   text-align: center;
   margin-bottom: 25px;
   color: var(--gold-soft);
-  font-family: 'Playfair Display', serif;
+  font-family: 'New Tegomin', serif;
 }
 
 .profile ul {
@@ -432,4 +432,12 @@ footer {
   .btn {
     width: 100%;
   }
+}
+.site-header h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'New Tegomin', serif;
 }
