@@ -3,68 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Katachi Onsha – Japanese UTAU Voicebank (Free Download)</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=New+Tegomin&display=swap" rel="stylesheet">
-
-  <!-- SEO -->
-  <meta name="description"
-        content="Official website of Katachi Onsha, a Japanese UTAU voicebank with a clear and expressive tone. Free download.">
-  <meta name="keywords"
-        content="UTAU, UTAU voicebank, Japanese voicebank, Katachi Onsha, VOCALOID alternative, singing synthesizer">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://katachionsha.neocities.org/">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Katachi Onsha – Japanese UTAU Voicebank">
-  <meta property="og:description"
-        content="Official Japanese UTAU voicebank. Free download. Clear tone.">
-  <meta property="og:url" content="https://katachionsha.neocities.org/">
-  <meta property="og:image" content="https://katachionsha.neocities.org/icon.png">
-
-  <!-- Twitter / X -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Katachi Onsha – Japanese UTAU Voicebank">
-  <meta name="twitter:description"
-        content="Free Japanese UTAU voicebank with a soft, emotional tone.">
-  <meta name="twitter:image" content="https://katachionsha.neocities.org/icon.png">
-
+  <meta name="description" content="Official website of Katachi Onsha, a Japanese UTAU voicebank with a clear and expressive tone. Free download.">
   <link rel="icon" type="image/png" href="icon.png">
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap" rel="stylesheet">
 </head>
-
 <body data-mood="default">
-
   <header class="site-header">
     <h1>Katachi Onsha</h1>
     <p class="subtitle">Japanese UTAU Voicebank</p>
     <p class="studio">by SynthDragon Studios</p>
+    <div class="language-switcher">
+      <nav aria-label="Language selector">
+        <a class="active" href="index.html">English</a>
+        <a href="jp/index.html">日本語</a>
+      </nav>
+    </div>
   </header>
 
   <main>
+    <section class="surface-card intro">
+      <img src="character.png" alt="Illustration of Katachi Onsha" class="character" data-gallery="character.png,charactersoft.png">
+      <button id="next-image-btn" class="next-image-btn" type="button" aria-label="Next image">➡️</button>
 
-    <section class="intro">
-      <img src="character.png"
-           alt="Illustration of Katachi Onsha"
-           class="character"
-           data-gallery="character.png,charactersoft.png">
-      <button id="next-image-btn" class="next-image-btn" type="button" aria-label="Próxima imagem">
-        <span aria-hidden="true">➡️</span>
-      </button>
-           
-    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2296592585&color=%23b4bca4&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/katachionsha" title="カタチ音叉" target="_blank" style="color: #cccccc; text-decoration: none;">カタチ音叉</a> · <a href="https://soundcloud.com/katachionsha/battle" title="戦闘! (カタチ音叉)" target="_blank" style="color: #cccccc; text-decoration: none;">戦闘! (カタチ音叉)</a></div>
+      <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2296592585&color=%23b4bca4&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
 
       <p class="description">
-        Katachi Onsha is a male Japanese UTAU voicebank
-        featuring a soft and clear tone, ideal for pop,
-        lo-fi, and emotional music.
+        Katachi Onsha is a male Japanese UTAU voicebank with a soft and clear tone,
+        ideal for pop, lo-fi, and emotional music.
       </p>
     </section>
 
-    <section class="profile">
+    <section class="surface-card profile">
       <h2>Profile</h2>
       <ul>
         <li><strong>Name:</strong> Katachi Onsha (カタチ音叉)</li>
@@ -78,25 +49,19 @@
       </ul>
     </section>
 
-    <nav class="main-nav">
+    <nav class="main-nav" aria-label="Main navigation">
       <a href="download.html" class="btn">Download</a>
       <a href="terms.html">Terms of Use</a>
       <a href="about.html">About / Project Status</a>
       <a href="musics.html">Musics</a>
     </nav>
-
   </main>
 
   <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">↑</button>
 
   <footer>
     <p>© 2026 SynthDragon Studios</p>
-    <p>
-      <strong>Contact:</strong>
-      <a href="mailto:katachionsha@outlook.jp">
-        katachionsha@outlook.jp
-      </a>
-    </p>
+    <p><strong>Contact:</strong> <a href="mailto:katachionsha@outlook.jp">katachionsha@outlook.jp</a></p>
   </footer>
 
   <script src="script.js" defer></script>
